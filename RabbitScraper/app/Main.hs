@@ -41,13 +41,17 @@ main = do
   let b4 = snd batchPairTwo
 
   
-  print $ length ipfsEndings
+  -- print $ length ipfsEndings
 
   -- forM_ ipfsEndings $ \x ->   putStrLn $ show $ addStrings x
 
   concurrently (
-    concurrently ( forM_ b1 $ \x ->   dlFile (addStrings x) "imgs" x) ( forM_ b2 $ \x ->   dlFile (addStrings x) "imgs" x))( 
-    concurrently ( forM_ b4 $ \x ->   dlFile (addStrings x) "imgs" x) ( forM_ b3 $ \x ->   dlFile (addStrings x) "imgs" x))
+    concurrently ( 
+      forM_ b1 $ \x ->   dlFile (addStrings x) "imgs" x) ( 
+      forM_ b2 $ \x ->   dlFile (addStrings x) "imgs" x))( 
+    concurrently ( 
+      forM_ b4 $ \x ->   dlFile (addStrings x) "imgs" x) ( 
+      forM_ b3 $ \x ->   dlFile (addStrings x) "imgs" x))
 
   print $ "\n FINISHED FETCHING"
 
