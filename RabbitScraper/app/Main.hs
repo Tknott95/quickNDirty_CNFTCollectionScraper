@@ -41,7 +41,6 @@ main = do
   let b4 = snd batchPairTwo
 
   
-  
   print $ length ipfsEndings
 
   -- forM_ ipfsEndings $ \x ->   putStrLn $ show $ addStrings x
