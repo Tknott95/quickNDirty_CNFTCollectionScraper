@@ -17,8 +17,8 @@ readLines :: FilePath -> IO [String]
 readLines = fmap lines . readFile
 
 -- ipfsUrlStart = "http://infura-ipfs.io/ipfs/" :: String
-ipfsUrlStart = "http://image-optimizer.jpgstoreapis.com/" :: String
-
+-- ipfsUrlStart = "http://image-optimizer.jpgstoreapis.com/" :: String
+ipfsUrlStart = "https://cnft.tools/static/assets/projectthumbs/deadrabbits/" :: String
 
 addStrings :: String  -> String
 addStrings _x = ipfsUrlStart ++ _x
@@ -40,6 +40,8 @@ main = do
   let b3 = fst batchPairTwo
   let b4 = snd batchPairTwo
 
+  let fileDLInto = "imgs/imgs" :: String
+
   
   -- print $ length ipfsEndings
 
@@ -47,11 +49,11 @@ main = do
 
   concurrently (
     concurrently ( 
-      forM_ b1 $ \x ->   dlFile (addStrings x) "imgs" x) ( 
-      forM_ b2 $ \x ->   dlFile (addStrings x) "imgs" x))( 
+      forM_ b1 $ \x ->   dlFile (addStrings x) fileDLInto x) ( 
+      forM_ b2 $ \x ->   dlFile (addStrings x) fileDLInto x))( 
     concurrently ( 
-      forM_ b4 $ \x ->   dlFile (addStrings x) "imgs" x) ( 
-      forM_ b3 $ \x ->   dlFile (addStrings x) "imgs" x))
+      forM_ b4 $ \x ->   dlFile (addStrings x) fileDLInto x) ( 
+      forM_ b3 $ \x ->   dlFile (addStrings x) fileDLInto x))
 
   print $ "\n FINISHED FETCHING"
 
