@@ -42,7 +42,9 @@ main = do
   -- forM_ ipfsEndings $ \x ->   putStrLn $ show $ addStrings x
 
 
-  concurrently (forM_ batchOne $ \x ->   dlFile (addStrings x) "imgs" x) (forM_ batchTwo $ \x ->   dlFile (addStrings x) "imgs" x) 
+  concurrently ( forM_ batchOne $ \x ->   dlFile (addStrings x) "imgs" x) ( forM_ batchTwo $ \x ->   dlFile (addStrings x) "imgs" x) 
+  
+  print $ "finished"
 
 -- code below is from another project and needs to be modularized
 
