@@ -35,5 +35,6 @@ executable RabbitScraper
       conduit,
       resourcet,
       base ^>=4.14.3.0
+    ghc-options: +RTS -N -RTS -threaded
     hs-source-dirs:   app
     default-language: Haskell2010
