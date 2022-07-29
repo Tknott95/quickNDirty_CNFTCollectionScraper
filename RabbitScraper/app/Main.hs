@@ -3,7 +3,7 @@
 module Main where
 
 import Control.Monad (forM_)
-
+import Control.Concurrent.Async (concurrently)
 
 -- for dl - this is normally modualrized out
 import           Control.Monad.Trans.Resource (runResourceT)
@@ -32,6 +32,8 @@ main = do
   ipfsEndings <- readLines "rabbits_ipfs_locs.txt"
 
   let ifpsPair = splitHalf ipfsEndings
+  let batchOne = fst ifpsPair
+  let batchTwo = snd ifpsPair
 
   
   
@@ -40,7 +42,7 @@ main = do
   -- forM_ ipfsEndings $ \x ->   putStrLn $ show $ addStrings x
 
 
-  forM_ ipfsEndings $ \x ->   dlFile (addStrings x) "imgs" x 
+  concurrently (forM_ batchOne $ \x ->   dlFile (addStrings x) "imgs" x) (forM_ batchTwo $ \x ->   dlFile (addStrings x) "imgs" x) 
 
 -- code below is from another project and needs to be modularized
 

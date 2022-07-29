@@ -29,7 +29,8 @@ executable RabbitScraper
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
-    build-depends:    
+    build-depends: 
+      async,   
       http-conduit,
       conduit,
       resourcet,
