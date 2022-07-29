@@ -32,8 +32,13 @@ main = do
   ipfsEndings <- readLines "rabbits_ipfs_locs.txt"
 
   let ifpsPair = splitHalf ipfsEndings
-  let batchOne = fst ifpsPair
-  let batchTwo = snd ifpsPair
+  let batchPairOne = splitHalf $ fst ifpsPair
+  let batchPairTwo = splitHalf $ snd ifpsPair
+
+  let b1 = fst batchPairOne
+  let b2 = snd batchPairOne
+  let b3 = fst batchPairTwo
+  let b4 = snd batchPairTwo
 
   
   
@@ -41,10 +46,12 @@ main = do
 
   -- forM_ ipfsEndings $ \x ->   putStrLn $ show $ addStrings x
 
+  concurrently (
+    concurrently ( forM_ b1 $ \x ->   dlFile (addStrings x) "imgs" x) ( forM_ b2 $ \x ->   dlFile (addStrings x) "imgs" x) 
+    concurrently ( forM_ b4 $ \x ->   dlFile (addStrings x) "imgs" x) ( forM_ b3 $ \x ->   dlFile (addStrings x) "imgs" x) 
+  )
 
-  concurrently ( forM_ batchOne $ \x ->   dlFile (addStrings x) "imgs" x) ( forM_ batchTwo $ \x ->   dlFile (addStrings x) "imgs" x) 
-  
-  print $ "finished"
+  print $ "\n FINISHED FETCHING"
 
 -- code below is from another project and needs to be modularized
 
