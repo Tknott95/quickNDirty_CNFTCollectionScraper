@@ -80,5 +80,5 @@ dlFile _url _filePath _fileName  = do
 
   if status == 200 then do
     putStrLn (bCyan++"   DOWNLOADING: "++clr ++ _url ++ "\n      to: " ++  (_filePath++"/"++_fileName) ++ "\n")
-    runResourceT $ httpSink request $ \_ -> sinkFile (_filePath++"/"++_fileName)
+    runResourceT $ httpSink request $ \_ -> sinkFile (_filePath++"/"++_fileName++".jpg")
   else putStrLn (bRed++"   FAILED DOWNLOADING: "++clr ++ _url ++ "\n      FAILED to: " ++  (_filePath++"/"++_fileName) ++ "\n")
