@@ -34,7 +34,8 @@ splitHalf _list = splitAt ((length _list + 1) `div` 2) _list
 
 main :: IO ()
 main = do
-  ipfsEndings <- readLines "rabbits_ipfs_locs.txt"
+  -- "rabbits_ipfs_locs.txt"
+  ipfsEndings <- readLines "supremes_ipfs_locs.txt"
 
   let ifpsPair = splitHalf ipfsEndings
   let batchPairOne = splitHalf $ fst ifpsPair
