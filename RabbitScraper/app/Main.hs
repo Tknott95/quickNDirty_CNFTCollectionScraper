@@ -18,7 +18,12 @@ readLines = fmap lines . readFile
 
 -- ipfsUrlStart = "http://infura-ipfs.io/ipfs/" :: String
 -- ipfsUrlStart = "http://image-optimizer.jpgstoreapis.com/" :: String
-ipfsUrlStart = "https://cnft.tools/static/assets/projectthumbs/deadrabbits/" :: String
+
+-- OG rabbits
+-- ipfsUrlStart = "https://cnft.tools/static/assets/projectthumbs/deadrabbits/" :: String
+-- Supreme Rabbits
+ipfsUrlStart = "https://images.cnft.tools/ipfs/" :: String
+  --"https://cnft.tools/static/assets/projectthumbs/drrsrabbitsupremes/" :: String
 
 addStrings :: String  -> String
 addStrings _x = ipfsUrlStart ++ _x
